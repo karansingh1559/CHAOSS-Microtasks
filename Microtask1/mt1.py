@@ -43,9 +43,9 @@ def create_config(org_name):
 
     config.add_section('sortinghat')
     config.set('sortinghat', 'host', 'localhost')
-    config.set('sortinghat', 'user', 'karan')
-    config.set('sortinghat', 'password', 'password')
-    config.set('sortinghat', 'database', 'mysql')
+    config.set('sortinghat', 'user', 'USERNAME')
+    config.set('sortinghat', 'password', 'PASSWORD')
+    config.set('sortinghat', 'database', 'DBNAME')
     config.set('sortinghat', 'load_orgs', 'false')
     config.set('sortinghat', 'unify_method', '')
     config.set('sortinghat', 'unaffiliated_group', 'Unknown')
@@ -67,7 +67,7 @@ def create_config(org_name):
     config.add_section('github')
     config.set('github', 'raw_index', 'github_test-raw')
     config.set('github', 'enriched_index', 'github_test')
-    config.set('github', 'api-token', '360b4c3b27d3a2e074c467d07380628e1db9677a')
+    config.set('github', 'api-token', 'XXXX')
     config.set('github', 'sleep-for-rate', 'true')
 
     with open(org_name + ".cfg", "w") as conf:
