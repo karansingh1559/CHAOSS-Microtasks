@@ -9,6 +9,7 @@ import os.path
 import configparser
 import json
 
+
 def parse_args():
     '''
     function to parse command line arguments
@@ -33,8 +34,8 @@ def check_cfg(cfg_files):
             print('File {0} does not exist'.format(str(arg)))
             sys.exit(1)
 
-def append_repo(cfg_files):
-    for arg in args.cfg_files:
+def append_repo(cfg_files, repo_org, repo_link):
+    for arg in cfg_files:
         config = configparser.ConfigParser()
         config.read(arg)
         jsonFile=config['projects']['projects_file']
@@ -43,8 +44,8 @@ def append_repo(cfg_files):
             d=json.load(jsonf)
             gitList=d[repo_org]['git']
             githubList=d[repo_org]['github']
-            gitList.append(args.repo_link + '.git')
-            githubList.append(args.repo_link)
+            gitList.append(repo_link)
+            githubList.append(repo_link[:-4])
             d[repo_org]['git']=gitList
             d[repo_org]['github']=githubList
 
@@ -69,7 +70,7 @@ def main():
     repo_org=url_parts[3]
 
     '''add repository to the json file of each cfg file'''
-    append_repo(args.cfg_files)
+    append_repo(args.cfg_files, repo_org, args.repo_link)
 
 if __name__ == '__main__':
     try:
